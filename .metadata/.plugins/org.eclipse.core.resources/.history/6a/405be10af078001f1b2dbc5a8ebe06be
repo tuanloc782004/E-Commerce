@@ -1,0 +1,7 @@
+spring.application.name=E-Commerce
+
+spring.datasource.url=jdbc:mysql://localhost:3306/jobportal?useSSL=false&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=782004tuanloc
+
+spring.jpa.hibernate.ddl-auto=upate

@@ -1,0 +1,16 @@
+package com.ecommerce.controllers.admin;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/admin")
+public class AdminController {
+
+	public String admin() {
+
+		return "admin/index";
+
+	}
+
+}
