@@ -1,0 +1,27 @@
+package com.ecommerce.controllers.admin;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ecommerce.models.Product;
+
+import ch.qos.logback.core.model.Model;
+
+@Controller
+@RequestMapping("/admin")
+public class ProductController {
+
+	@RequestMapping("/product")
+	public String index() {
+		return "admin/product/index";
+	}
+	
+	@RequestMapping("/product-add")
+	public String add(Model model) {
+		
+		Product product = new Product();
+		model.addAttribute("product", product);
+		return "admin/product/add";
+	}
+	
+}

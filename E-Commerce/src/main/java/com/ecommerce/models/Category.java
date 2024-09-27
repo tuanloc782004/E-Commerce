@@ -1,10 +1,13 @@
 package com.ecommerce.models;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,16 +21,19 @@ public class Category {
 	private String categoryName;
 	@Column(name = "categoryStatus")
 	private Boolean categoryStatus;
+	@OneToMany(mappedBy = "category")
+	private Set<Product> products;
 	
 	public Category() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Category(Integer categoryId, String categoryName, Boolean categoryStatus) {
+	public Category(Integer id, String categoryName, Boolean categoryStatus, Set<Product> products) {
 		super();
-		this.id = categoryId;
+		this.id = id;
 		this.categoryName = categoryName;
 		this.categoryStatus = categoryStatus;
+		this.products = products;
 	}
 
 	public Integer getId() {
@@ -52,6 +58,14 @@ public class Category {
 
 	public void setCategoryStatus(Boolean categoryStatus) {
 		this.categoryStatus = categoryStatus;
+	}
+	
+	public Set<Product> getProducts() {
+		return products;
+	}
+	
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
 		
 }
