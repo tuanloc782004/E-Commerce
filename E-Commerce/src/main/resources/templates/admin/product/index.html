@@ -33,7 +33,7 @@
 
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">Danh sách danh mục</h3>
+						<h3 class="box-title">Danh sách sản phẩm</h3>
 						<div>
 							<a class="btn btn-success" href="add-category">Thêm mới thư
 								mục</a>
@@ -45,23 +45,26 @@
 							<tbody>
 								<tr>
 									<th style="width: 5 0px">ID</th>
-									<th>Category Name</th>
-									<th>Status</th>
+									<th>Product Name</th>
+									<th>Price</th>
+									<th>Image</th>
+									<th>Category</th>
 									<th style="width: 150px">Action</th>
 								</tr>
-								<tr th:each="category : ${list}">
-									<td th:text="${category.id}"></td>
-									<td th:text="${category.categoryName}"></td>
-									<td><span th:if="${category.categoryStatus == true}"
-										class="label label-success">Hiện</span> <span
-										th:if="${category.categoryStatus == false}"
-										class="label label-danger">Ẩn</span></td>
+								<tr th:each="product : ${listProduct}">
+									<td th:text="${product.id}"></td>
+									<td th:text="${product.productName}"></td>
+									<td th:text="${product.price}"></td>
+									<td><img th:src="@{'/uploads/' + ${product.image}}"
+										width="100px" height="100px" alt="User Image"></td>
+									<td th:text="${product.category.categoryName}"></td>
 									<td>
 										<!-- Action buttons, e.g., edit/delete --> <a
-										th:href="@{|/admin/edit-product/${category.id}|}"
+										th:href="@{|/admin/edit-product/${product.id}|}"
 										class="btn btn-primary">Edit</a> <a
-										th:href="@{|/admin/delete-product/${category.id}|}"
-										class="btn btn-danger" onclick="return confirm('Bạn chắc chưa ???')">Delete</a>
+										th:href="@{|/admin/delete-product/${product.id}|}"
+										class="btn btn-danger"
+										onclick="return confirm('Bạn chắc chưa ???')">Delete</a>
 									</td>
 								</tr>
 							</tbody>

@@ -29,8 +29,8 @@ public class SecurityConfig {
 		.csrf(csrf -> csrf.disable())
 		.authorizeHttpRequests((auth)->auth
 				.requestMatchers("/*").permitAll()
-				.requestMatchers("/admin/**").permitAll()
-//				.requestMatchers("/admin/**").hasAuthority("ADMIN")
+//				.requestMatchers("/admin/**").permitAll()
+				.requestMatchers("/admin/**").hasAuthority("ADMIN")
 				.anyRequest().authenticated()
 		)
 		.formLogin(login->login
@@ -48,7 +48,7 @@ public class SecurityConfig {
 	@Bean
 	WebSecurityCustomizer webSecurityCustomizer() {
 		
-		return (web)->web.ignoring().requestMatchers("/static/**", "/fe/**", "/assets/**");
+		return (web)->web.ignoring().requestMatchers("/static/**", "/fe/**", "/assets/**", "/uploads/**");
 		
 	}
 	

@@ -31,7 +31,10 @@ public class ProductController {
 	private ProductService productService;
 	
 	@RequestMapping("/product")
-	public String index() {
+	public String index(Model model) {
+		
+		List<Product> listProduct = this.productService.getAll();
+		model.addAttribute("listProduct", listProduct);
 		return "admin/product/index";
 	}
 	
